@@ -6,21 +6,20 @@ import (
 	"airbyte/internal/sdk"
 	"context"
 
-	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/resource"
 )
 
-var _ datasource.DataSource = &SourceKafkaDataSource{}
-var _ datasource.DataSourceWithConfigure = &SourceKafkaDataSource{}
+var _ resource.Resource = &SourceKafkaResource{}
+var _ resource.ResourceWithImportState = &SourceKafkaResource{}
 
-func NewSourceKafkaDataSource() datasource.DataSource {
-	return &SourceKafkaDataSource{}
+func NewSourceKafkaResource() resource.Resource {
+	return &SourceKafkaResource{}
 }
 
-// SourceKafkaDataSource is the data source implementation.
-type SourceKafkaDataSource struct {
+type SourceKafkaResource struct {
 	client *sdk.SDK
 }
 
-func (r *SourceKafkaDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+func (r *SourceKafkaResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_source_kafka"
 }
