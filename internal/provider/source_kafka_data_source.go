@@ -7,6 +7,7 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
@@ -20,6 +21,14 @@ func NewSourceKafkaDataSource() datasource.DataSource {
 // SourceKafkaDataSource is the data source implementation.
 type SourceKafkaDataSource struct {
 	client *sdk.SDK
+}
+// SourceKafkaDataSourceModel describes the data model.
+type SourceKafkaDataSourceModel struct {
+	Configuration SourceKafka `tfsdk:"configuration"`
+	Name          types.String `tfsdk:"name"`
+	SecretID      types.String `tfsdk:"secret_id"`
+	SourceID      types.String `tfsdk:"source_id"`
+	WorkspaceID   types.String `tfsdk:"workspace_id"`
 }
 
 // Metadata returns the data source type name.
