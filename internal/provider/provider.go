@@ -344,6 +344,7 @@ func (p *AirbyteProvider) Resources(ctx context.Context) []func() resource.Resou
 		NewSourceZoomResource,
 		NewSourceZuoraResource,
 		NewWorkspaceResource,
+		NewSourceKafkaResource,
 	}
 }
 
@@ -587,6 +588,7 @@ func (p *AirbyteProvider) DataSources(ctx context.Context) []func() datasource.D
 		NewSourceZoomDataSource,
 		NewSourceZuoraDataSource,
 		NewWorkspaceDataSource,
+		NewSourceKafkaDataSource,
 	}
 }
 

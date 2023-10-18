@@ -9,8 +9,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 )
 
-var _ datasource.DataSource = &SourceKlarnaDataSource{}
-var _ datasource.DataSourceWithConfigure = &SourceKlarnaDataSource{}
+var _ datasource.DataSource = &SourceKafkaDataSource{}
+var _ datasource.DataSourceWithConfigure = &SourceKafkaDataSource{}
 
 func NewSourceKafkaDataSource() datasource.DataSource {
 	return &SourceKafkaDataSource{}
