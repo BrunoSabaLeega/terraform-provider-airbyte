@@ -24,14 +24,14 @@ type SourceKafkaResource struct {
 }
 
 // SourceKafkaResourceModel describes the resource data model.
-type SourceKafkaResourceModel struct {
-	Configuration SourceKafka `tfsdk:"configuration"`
-	Name          types.String `tfsdk:"name"`
-	SecretID      types.String `tfsdk:"secret_id"`
-	SourceID      types.String `tfsdk:"source_id"`
-	SourceType    types.String `tfsdk:"source_type"`
-	WorkspaceID   types.String `tfsdk:"workspace_id"`
-}
+//type SourceKafkaResourceModel struct {
+//	Configuration SourceKafka `tfsdk:"configuration"`
+//	Name          types.String `tfsdk:"name"`
+//	SecretID      types.String `tfsdk:"secret_id"`
+//	SourceID      types.String `tfsdk:"source_id"`
+//	SourceType    types.String `tfsdk:"source_type"`
+//	WorkspaceID   types.String `tfsdk:"workspace_id"`
+//}
 
 func (r *SourceKafkaResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_source_kafka"
