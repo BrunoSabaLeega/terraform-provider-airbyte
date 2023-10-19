@@ -4,7 +4,6 @@ package provider
 
 import (
 	"airbyte/internal/sdk"
-	"airbyte/internal/sdk/pkg/models/operations"
 	"context"
 	"fmt"
 
