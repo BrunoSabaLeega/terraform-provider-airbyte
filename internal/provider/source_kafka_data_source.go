@@ -4,7 +4,9 @@ package provider
 
 import (
 	"airbyte/internal/sdk"
+	"airbyte/internal/sdk/pkg/models/operations"
 	"context"
+	"fmt"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 )
@@ -33,4 +35,28 @@ type SourceKafkaDataSource struct {
 // Metadata returns the data source type name.
 func (r *SourceKafkaDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
 	resp.TypeName = req.ProviderTypeName + "_source_kafka"
+}
+
+func (r *SourceKafkaDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
+	// Prevent panic if the provider has not been configured.
+	if req.ProviderData == nil {
+		return
+	}
+
+	client, ok := req.ProviderData.(*sdk.SDK)
+
+	if !ok {
+		resp.Diagnostics.AddError(
+			"Unexpected DataSource Configure Type",
+			fmt.Sprintf("Expected *sdk.SDK, got: %T. Please report this issue to the provider developers.", req.ProviderData),
+		)
+
+		return
+	}
+
+	r.client = client
+}
+
+func (r *SourceKafkaDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	return
 }
